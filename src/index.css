@@ -1,68 +1,241 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@import "tailwindcss/preflight";
+@import "tailwindcss/utilities";
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  background-color: #000000;
+  color: #3b82f6;
+  font-family: 'Courier New', monospace;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+/* Force text color visibility */
+html, body {
+  color: #3b82f6 !important;
 }
 
+p, div, span, h1, h2, h3, h4, h5, h6, label {
+  color: inherit;
+}
+
+/* Explicit terminal dark theme colors with neon glow */
+.text-blue-400 { 
+  color: #60a5fa !important;
+  text-shadow: 0 0 10px #60a5fa, 0 0 20px #3b82f6, 0 0 30px #1e40af;
+}
+
+.text-blue-300 { 
+  color: #93c5fd !important;
+  text-shadow: 0 0 8px #93c5fd, 0 0 16px #60a5fa;
+}
+
+.text-blue-500 { 
+  color: #3b82f6 !important;
+  text-shadow: 0 0 10px #3b82f6, 0 0 20px #1e40af;
+}
+
+.text-green-400 { 
+  color: #4ade80 !important;
+  text-shadow: 0 0 10px #4ade80, 0 0 20px #16a34a, 0 0 30px #15803d;
+}
+
+.text-green-500 { 
+  color: #22c55e !important;
+  text-shadow: 0 0 10px #22c55e, 0 0 20px #16a34a, 0 0 30px #15803d;
+}
+
+.text-orange-300 { 
+  color: #fed7aa !important;
+  text-shadow: 0 0 8px #fed7aa, 0 0 16px #fb923c;
+}
+
+.text-orange-500 { 
+  color: #f97316 !important;
+  text-shadow: 0 0 10px #f97316, 0 0 20px #ea580c;
+}
+
+.text-red-500 { 
+  color: #ef4444 !important;
+  text-shadow: 0 0 10px #ef4444, 0 0 20px #dc2626;
+}
+
+.text-cyan-400 { 
+  color: #22d3ee !important;
+  text-shadow: 0 0 10px #22d3ee, 0 0 20px #06b6d4;
+}
+
+.text-zinc-500 { 
+  color: #a1a1aa !important;
+  text-shadow: 0 0 5px #a1a1aa;
+}
+
+.text-zinc-600 { 
+  color: #71717a !important;
+  text-shadow: 0 0 3px #71717a;
+}
+
+/* Borders with glow */
+.border-blue-500 { 
+  border-color: #3b82f6 !important;
+  box-shadow: inset 0 0 10px rgba(59, 130, 246, 0.3), 0 0 15px rgba(59, 130, 246, 0.2) !important;
+}
+
+.border-green-500 { 
+  border-color: #22c55e !important;
+  box-shadow: inset 0 0 10px rgba(34, 197, 94, 0.3), 0 0 15px rgba(34, 197, 94, 0.2) !important;
+}
+
+.border-zinc-800 { 
+  border-color: #27272a !important;
+}
+
+/* Neon glow animation */
+@keyframes neon-flicker {
+  0%, 18%, 22%, 25%, 54%, 56%, 100% {
+    text-shadow: 0 0 10px #60a5fa, 0 0 20px #3b82f6, 0 0 30px #1e40af;
+  }
+  20%, 24%, 55% {
+    text-shadow: 0 0 5px #60a5fa, 0 0 10px #3b82f6;
+  }
+}
+
+/* Apply neon effect to headers and important text */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+}
+
+/* Neon effect for form labels */
+label {
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+/* Input field styling with neon border */
+input, textarea {
+  background-color: rgba(0, 0, 0, 0.8) !important;
+  border-color: #27272a !important;
+  color: #93c5fd !important;
+  transition: all 0.3s ease;
+}
+
+input:focus, textarea:focus {
+  border-color: #3b82f6 !important;
+  color: #60a5fa !important;
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.5), inset 0 0 5px rgba(59, 130, 246, 0.2) !important;
+}
+
+input::placeholder, textarea::placeholder {
+  color: #52525b !important;
+}
+
+/* Button styling with neon glow */
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  transition: all 0.3s ease;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+button:hover {
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.6) !important;
+}
+
+:root {
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+    outline-color: hsl(var(--ring) / 0.5);
   }
-  a:hover {
-    color: #747bff;
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
   }
-  button {
-    background-color: #f9f9f9;
-  }
+}
+
+/* Terminal-style scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3f3f46;
 }
